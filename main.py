@@ -123,7 +123,16 @@ elif option == 'Explore Data':
     st.subheader("Data Rating")
     st.dataframe(load_rating())
 elif option == 'Recommendation':
+    if "visibility" not in st.session_state:
+        st.session_state.visibility = "visible"
+        st.session_state.disabled = False
+
     st.header("Recommendation")
+
+    title = st.text_input("Judul Film",        
+        label_visibility=st.session_state.visibility,
+        disabled=st.session_state.disabled,
+        placeholder=st.session_state.placeholder,)
     
 elif option == 'About':
     st.write(""" # About """)
